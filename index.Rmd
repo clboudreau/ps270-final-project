@@ -11,6 +11,4 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to...
-
-maybe something related to laws, regulations, and/or health care (more specifically health care access)
+I am interested in possibly exploring data related to laws, regulations, and/or health care. More specifically, I. think exploring health care access could be interesting. I could maybe so a combination by exploring data related to health care regulations/laws.
