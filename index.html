@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["archive.zip","bar_pass_prediction.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1545,8 +1545,35 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <h2 id="project-thoughts">Project thoughts</h2>
-<p>I am interested in possibly exploring data related to laws, regulations, and/or health care. More specifically, I. think exploring health care access could be interesting. I could maybe so a combination by exploring data related to health care regulations/laws.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>I am interested in possibly exploring data related to laws. More specifically, I think exploring the systems in place before becoming a lawyer could be interesting.</p>
+<p>Does one’s undergraduate grade point average enhance one’s ability to perform on the Law School Admission Test? In this study, I plan to explore students who have gone through law school and analyze their past undergraduate grade point averages (GPAs) to explore the potential effects on Law School Admission Test (LSAT) performance. I hypothesize that students who reported higher GPAs will have higher LSAT scores. While the LSAT is a standardized test designed to measure aptitude for law school, one’s undergraduate GPA (ugpa) indicates how a student performs academically over the long term. With this in mind, students with higher ugpas are likely more driven to achieve higher LSAT scores. The explanatory variable is the reported ugpas, measured numerically from a minimum value of 1.5 up to a maximum value of 3.9. These numbers represent each student’s cumulative ugpa before attending law school. For example, if the variable were coded =3.7, it would be the equivalent of a 3.7 undergraduate GPA. My outcome variable is LSAT scores received by the students; however, the data is presented with a minimum value of 11 and a maximum value of 48. The LSAT normally ranges from 120-180. In other words, the LSAT score has been rescaled for this outcome variable, but will still be interpreted as higher numbers indicating better LSAT performance. If I observe higher LSAT scores among students with higher undergraduate GPAs, this would provide support for my hypothesis. However, if I observe lower LSAT scores or no meaningful difference in LSAT scores across GPAs, this would provide evidence against my hypothesis.</p>
+<p>Adding data from the “Law School Admissions Bar Passage”</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>bar_predict</span> <span class='op'>&lt;-</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"bar_pass_prediction.csv"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>bar_predict</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code># A tibble: 6 × 39
+  decile1b decile3    ID decile1   sex  race cluster  lsat  ugpa
+     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1       10      10     2      10     1     7       1    44   3.5
+2        5       4     3       5     1     7       2    29   3.5
+3        3       2    36       3     2     7       3    36   3.5
+4        7       4    52       7     2     7       3    39   3.5
+5        9       8    55       9     2     7       4    48   3.5
+6        3       5    72       3     1     7       3    40   3.5
+# ℹ 30 more variables: zfygpa &lt;dbl&gt;, DOB_yr &lt;dbl&gt;, grad &lt;chr&gt;,
+#   zgpa &lt;dbl&gt;, bar1 &lt;chr&gt;, bar1_yr &lt;dbl&gt;, bar2 &lt;chr&gt;, bar2_yr &lt;dbl&gt;,
+#   fulltime &lt;dbl&gt;, fam_inc &lt;dbl&gt;, age &lt;dbl&gt;, gender &lt;chr&gt;,
+#   parttime &lt;dbl&gt;, male &lt;dbl&gt;, race1 &lt;chr&gt;, race2 &lt;chr&gt;,
+#   Dropout &lt;chr&gt;, other &lt;dbl&gt;, asian &lt;dbl&gt;, black &lt;dbl&gt;, hisp &lt;dbl&gt;,
+#   pass_bar &lt;dbl&gt;, bar &lt;chr&gt;, bar_passed &lt;lgl&gt;, tier &lt;dbl&gt;,
+#   index6040 &lt;dbl&gt;, indxgrp &lt;chr&gt;, indxgrp2 &lt;chr&gt;, …</code></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
