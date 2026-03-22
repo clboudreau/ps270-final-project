@@ -11,17 +11,39 @@ output:
 
 ## Project thoughts
 
-I am interested in possibly exploring data related to laws. More specifically, I think exploring the systems in place before becoming a lawyer could be interesting.
+I am interested in possibly exploring data related to consumer behavior. For example, I think exploring the relationship between different social groups on spending or the impacts of different types of advertisement on spending across different social groups could both be interesting.
 
-Does one’s undergraduate grade point average enhance one’s ability to perform on the Law School Admission Test? In this study, I plan to explore students who have gone through law school and analyze their past undergraduate grade point averages (GPAs) to explore the potential effects on Law School Admission Test (LSAT) performance. I hypothesize that students who reported higher GPAs will have higher LSAT scores. While the LSAT is a standardized test designed to measure aptitude for law school, one’s undergraduate GPA (ugpa) indicates how a student performs academically over the long term. With this in mind, students with higher ugpas are likely more driven to achieve higher LSAT scores. The explanatory variable is the reported ugpas, measured numerically from a minimum value of 1.5 up to a maximum value of 3.9. These numbers represent each student’s cumulative ugpa before attending law school. For example, if the variable were coded =3.7, it would be the equivalent of a 3.7 undergraduate GPA. My outcome variable is LSAT scores received by the students; however, the data is presented with a minimum value of 11 and a maximum value of 48. The LSAT normally ranges from 120-180. In other words, the LSAT score has been rescaled for this outcome variable, but will still be interpreted as higher numbers indicating better LSAT performance. If I observe higher LSAT scores among students with higher undergraduate GPAs, this would provide support for my hypothesis. However, if I observe lower LSAT scores or no meaningful difference in LSAT scores across GPAs, this would provide evidence against my hypothesis. 
+Does one's age group influence the amount of money they spend on Black Friday?
+In this study, I plan to explore consumer behavior specifically on Black Friday and analyze how one's age impacts purchase amount. I hypothesize that younger consumers, on average, will spend more than older shoppers on Black Friday. While the purchase amount reflects actual spending during the event, a shopper’s age group may provide insights into the differences in spending habits and shopping preferences. With this in mind, younger consumers are more likely to be up to date on online deals and more likely to shop online during the event. Additionally, with age, spending patterns may become more conservative or focused on necessity rather than impulse purchases. The explanatory variable is the reported age groups, measured categorically by grouping close age groups together (e.g., a 30-year-old consumer would report 26-35). For example, if the variable were coded =46-50, it would be the equivalent of a consumer reporting to fall somewhere between the ages of 46 and 50. My outcome variable is the purchase amount of each shopper’s transaction(s); the data is numeric, with higher values indicating larger spending. I am somewhat skeptical of the purchase amount values, as some of the numbers seem surprisingly high compared to what I would expect, but the data still follows the logic that higher numbers indicate higher spending. If I observe higher purchase amounts among younger age groups, this would provide support for my hypothesis. However, if I observe lower purchase amounts or no meaningful difference in spending across age groups, this would provide evidence against my hypothesis. 
 
 
-Adding data from the "Law School Admissions Bar Passage"
+Adding data from the "Black Friday Sales Data"
 
 ```{r}
 library(tidyverse)
 
-bar_predict <-read_csv("bar_pass_prediction.csv")
+blfri <-read_csv("train.csv")
+blfri
 
-head(bar_predict)
+head(blfri)
 ```
+
+
+```{r}
+blfri_2 <- blfri |>
+  group_by(Age) |>
+  summarize(avg_purchase = mean(Purchase))
+blfri_2
+
+ggplot(blfri_2, aes(x = Age, y = avg_purchase)) +
+  geom_point(size = 4, color = "indianred") +
+  ylim(8800,9600) +
+  labs(
+     title = "Average Spending on Black Friday by Age",
+    x = "Age Group",
+    y = "Average Purchase Amount"
+  )
+```
+
+
+
